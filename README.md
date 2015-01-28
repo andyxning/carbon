@@ -21,3 +21,6 @@ Please refer to the instructions at [readthedocs](http://graphite.readthedocs.or
 ## License
 
 Carbon is licensed under version 2.0 of the Apache License. See the [LICENSE](https://github.com/graphite-project/carbon/blob/master/LICENSE) file for details.
+
+## Changes with official Carbon
+* Add **MIRRORS** option to carbon-relay in **version 0.9.x**. for more info please see [this](https://github.com/graphite-project/carbon/pull/365) pull request(unfortunately, this Pull Request **is not** accepted by the official Carbon).
