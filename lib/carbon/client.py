@@ -1,3 +1,5 @@
+import __builtin__
+
 from twisted.application.service import Service
 from twisted.internet import reactor
 from twisted.internet.defer import Deferred, DeferredList
@@ -268,9 +270,10 @@ class CarbonClientManager(Service):
       self.client_factories[destination].sendDatapoint(metric, datapoint)
 
     # Split a full dumped metric infos to MIRRORS_DESTINATIONS
-    if settings.MIRRORS_DESTINATIONS:
-      for destination in settings.MIRRORS_DESTINATIONS:
-        self.client_factories[destination].sendDatapoint(metric, datapoint)
+    if __builtin__.program == 'carbon-relay':
+        if settings.MIRRORS_DESTINATIONS:
+            for destination in settings.MIRRORS_DESTINATIONS:
+                self.client_factories[destination].sendDatapoint(metric, datapoint)
 
   def __str__(self):
     return "<%s[%x]>" % (self.__class__.__name__, id(self))
